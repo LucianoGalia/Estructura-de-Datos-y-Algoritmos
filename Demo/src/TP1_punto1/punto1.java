@@ -63,7 +63,7 @@ public class punto1 {
 //            System.out.println(n1.p.nombre);
 //            System.out.println(n1.p.nombre);
 //            System.out.println(n1.p.nombre);
-            
+//            
 
             
     }

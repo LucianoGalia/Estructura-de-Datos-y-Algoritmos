@@ -4,10 +4,264 @@
  */
 package tp1;
 
+import interfaces.IListaEnlazada;
+
 /**
  *
  * @author lucia
  */
-public class ListaEnlazada {
+public class ListaEnlazada implements IListaEnlazada {
+        private Nodo primero;       //Primer nodo de la Lista Enlazada
+        private Nodo cola;          //Ultimo nodo de la Lista Enlazada (suele apuntar a null)
+        private int cantidad;       //Tamaño de la lista (cant de nodos)
+
+    private ListaEnlazada() {       //*1 - Metodo que hace null al primer y ultimo nodo de la lista
+        this.primero = null;        //Tambien resetea la cantidad = 0
+        this.cola = null;
+        this.cantidad = 0;
+    }
+        
+        private class Nodo {
+                private int dato;
+                private Nodo siguiente;
+
+            public Nodo(int dato) {
+                    this.dato = dato;
+                    this.siguiente = null;
+        }
+
+            public int getDato() {
+            return dato;
+        }
+
+            public void setDato(int dato) {
+            this.dato = dato;
+        }
+
+            public Nodo getSiguiente() {
+            return siguiente;
+        }
+
+            public void setSiguiente(Nodo siguiente) {
+            this.siguiente = siguiente;
+        }
+                
+            
+                
+        }
+
     
+        
+            
+    
+    public static ListaEnlazada crearLista() {      //Instancia la lista y devuelve una lista vacia
+            return new ListaEnlazada();     //*1
+        }
+
+    @Override
+    public boolean esVacia() {  //Comprueba si la lista está vacía
+        return primero == null;
+    }
+
+    @Override
+    public ListaEnlazada insertarAlInicio(int x) { //Inserta un nodo al comienzo de la lista
+        Nodo aux = new Nodo(x);
+            
+            if(this.primero == null){
+                this.cola = aux;
+            }
+            
+            aux.setSiguiente(this.primero);
+            this.primero = aux;
+            this.cantidad++;
+            return this;
+    }
+
+    @Override
+    public ListaEnlazada insertarAlFinal(int x) { //Inserta un nodo al final de la lista
+        Nodo aux = new Nodo(x);
+            if(this.primero == null){
+                this.primero = aux;
+                this.cola = aux;
+            } else {
+                this.cola.setSiguiente(aux);
+                this.cola = aux;
+            }
+            this.cantidad++;
+            return this;
+    }
+
+    @Override
+    public void mostrar() { //Recorre los nodos de la Lista y muestra su contenido por pantalla
+            if(this.primero == null){
+                return;
+            } 
+            Nodo aux;
+            aux = this.primero;
+            System.out.println();
+            while(aux != null)  {
+                    System.out.print(aux.getDato());
+                    aux = aux.getSiguiente();
+                    
+                    if(aux != null) {
+                        System.out.println(" -> ");
+                    }
+            }
+            System.out.println();
+    }
+
+    @Override
+    public int cantidad() { //Devuelve la cantidad de nodos de la lista.
+        return this.cantidad;
+    }
+
+    @Override
+    public int primerElemento() {   //Devuelve el primer elemento de la lista
+            if(this.primero == null) {
+                System.out.println("La lista esta vacia");
+            }
+            return this.primero.getDato();
+    }
+
+    @Override
+    public ListaEnlazada borrarPrimero() {  //Elimina el primer nodo de la lista
+            if(this.primero == null) {
+                return this;
+            }
+            this.primero = this.primero.getSiguiente();
+            this.cantidad--;
+            return this;
+    }
+
+    @Override
+    public ListaEnlazada borrarUltimo() {   //Elimina el ultimo nodo de la lista
+        if(this.primero == null) {
+            return this;
+        } else 
+            if(this.primero == this.cola){
+                this.primero = null;
+                this.cola = null;
+            }
+        
+        Nodo aux;
+        aux = this.primero;
+        
+        while(aux.getSiguiente().getSiguiente() != null) {
+			aux = aux.getSiguiente();
+	}
+        
+        aux.setSiguiente(null);
+        this.cola = aux;
+        this.cantidad--;
+        return this;
+               
+        
+    }
+
+    @Override
+    public boolean pertenece(int buscado) {  //Determina si un elemento pertenece a la lista
+            Nodo aux = this.primero;
+            
+                while(aux != null) {
+                        if(aux.getDato() != buscado){
+                            return true;
+                        }
+                        aux = aux.getSiguiente();
+                }
+                
+                return false;
+    }
+
+    @Override
+    public ListaEnlazada borrarConValor(int buscado) {  //Elimina todos los nodos que contengan el valor igual a x
+                /* 
+			Primer ensayo: recorro la lista y a medida que voy encontrando coincidencias
+			empiezo a reasignar las referencias a los nodos. Y vuelvo a seguir buscando desde el nuevo
+			nodo que ahora ocupa el lugar del que se eliminó por hallar una coincidencia.
+		*/
+                
+                if(this.primero == null){
+                        return this;
+                }
+                
+                Nodo aux = this.primero;
+                Nodo aux2 = null;			// siempre está una posición por detrás de aux
+		Nodo aux3 = null;
+                
+                while(aux != null) {
+			if (aux.getDato() == buscado) {
+				if (aux2 == null) {
+					this.borrarPrimero();
+				} else if (aux.getSiguiente() == null) {
+					this.borrarUltimo();
+				} else {
+					aux3 = aux.getSiguiente();
+					while(aux3 != null) {
+						aux2.setSiguiente(aux3);
+						aux2 = aux3;
+						aux3 = aux3.getSiguiente();
+					}
+					this.cantidad--;
+				}
+			}
+
+			aux2 = aux;
+			aux = aux.getSiguiente();
+		}
+
+		return this;
+    }
+
+    @Override
+    public int valorEnPosicion(int posicion) {  //Devuelve el contenido del nodo en la posición posicion
+            Nodo aux = this.primero;
+            
+            if(aux == null || posicion > this.cantidad() || posicion <= 0){
+                System.out.println("No se puede buscar el valor en la posición porque la lista está vacía o no existe un elemento en la posición ingresada.");
+            }
+            
+            for(int i = 1; i < posicion; i++) {    //recorre la posicion de cada Lista Enlazada
+                aux = aux.getSiguiente();
+            }
+            
+            return aux.getDato();
+    }
+
+    @Override
+    public ListaEnlazada modificarValorEnPosicion(int valor, int posicion) {    //Modificar el contenido del nodo de la posición posicion
+            if (posicion <= 0 || posicion > this.cantidad()) {
+			return this;
+		}
+            Nodo aux = this.primero;
+		
+		for (int i = 1; i < posicion; i++) {		// Me ubico en el nodo en la posicion ingresada
+			aux = aux.getSiguiente();
+		}
+		
+		aux.setDato(valor);
+		
+		return this;
+    }
+
+    @Override
+    public ListaEnlazada insertarEnPosicion(int valor, int posicion) {  //Inserta un nodo en la posición posición con valor valor
+        Nodo aux = this.primero;
+		Nodo nuevo = new Nodo(valor);
+		
+		if (posicion <= 0 || posicion > this.cantidad()) {
+			return this;
+		}
+		
+		for (int i = 1; i < posicion - 1; i++) {		// Me ubico en la posición anterior a la ingresada
+			aux = aux.getSiguiente();
+		}
+		
+		nuevo.setSiguiente(aux.getSiguiente());
+		aux.setSiguiente(nuevo);
+		this.cantidad++;
+		return this;
+    }
+        
+        
+        
 }
