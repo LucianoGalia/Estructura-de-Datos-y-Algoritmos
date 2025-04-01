@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package tp1;
+package controladores;
 
 import java.util.NoSuchElementException;
+import tp1.ListaEnlazada;
 
 /**
  *
