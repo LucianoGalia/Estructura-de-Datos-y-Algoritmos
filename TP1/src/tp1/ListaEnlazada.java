@@ -5,10 +5,11 @@
 package tp1;
 
 import interfaces.IListaEnlazada;
+import java.util.NoSuchElementException;
 
 /**
  *
- * @author lucia
+ * @author luciano
  */
 public class ListaEnlazada implements IListaEnlazada {
         private Nodo primero;       //Primer nodo de la Lista Enlazada
@@ -92,23 +93,27 @@ public class ListaEnlazada implements IListaEnlazada {
     }
 
     @Override
-    public void mostrar() { //Recorre los nodos de la Lista y muestra su contenido por pantalla
-            if(this.primero == null){
-                return;
-            } 
-            Nodo aux;
-            aux = this.primero;
-            System.out.println();
-            while(aux != null)  {
-                    System.out.print(aux.getDato());
-                    aux = aux.getSiguiente();
-                    
-                    if(aux != null) {
-                        System.out.println(" -> ");
-                    }
-            }
-            System.out.println();
-    }
+	public void mostrar() {  //Recorre los nodos de la Lista y muestra su contenido por pantalla
+		if (this.primero == null) {
+			return;
+		}
+		
+		Nodo aux;
+		aux = this.primero;
+		System.out.println();
+		
+		while(aux != null) {
+			System.out.print(aux.getDato());
+			aux = aux.getSiguiente();
+			
+			if (aux != null) {				// luego de mostrar el último no coloca flecha
+				System.out.print(" -> ");
+			}
+			
+		}
+		
+		System.out.println();
+	}
 
     @Override
     public int cantidad() { //Devuelve la cantidad de nodos de la lista.
@@ -118,7 +123,8 @@ public class ListaEnlazada implements IListaEnlazada {
     @Override
     public int primerElemento() {   //Devuelve el primer elemento de la lista
             if(this.primero == null) {
-                System.out.println("La lista esta vacia");
+                throw new NoSuchElementException("La lista esta vacia");
+                
             }
             return this.primero.getDato();
     }
