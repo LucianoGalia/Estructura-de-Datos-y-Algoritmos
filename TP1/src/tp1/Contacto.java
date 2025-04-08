@@ -28,32 +28,29 @@ public class Contacto {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.Nombre);
-        hash = 89 * hash + Objects.hashCode(this.Telefono);
-        hash = 89 * hash + Objects.hashCode(this.email);
-        return hash;
+//        int hash = 3;
+//        hash = 89 * hash + Objects.hashCode(this.Nombre);
+//        hash = 89 * hash + Objects.hashCode(this.Telefono);
+//        hash = 89 * hash + Objects.hashCode(this.email);
+//        return hash;
+        return Objects.hash(email, Telefono);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        if (this == obj) 
             return true;
-        }
-        if (obj == null) {
+        if (obj == null) 
             return false;
-        }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass()) 
             return false;
-        }
         final Contacto other = (Contacto) obj;
-        if (!Objects.equals(this.Nombre, other.Nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.Telefono, other.Telefono)) {
-            return false;
-        }
-        return Objects.equals(this.email, other.email);
+        return this.Nombre.equals(other.Nombre) || this.email.equalsIgnoreCase(other.email) || this.Telefono.equalsIgnoreCase(other.Telefono);
+//        if (!Objects.equals(this.Nombre, other.Nombre)) 
+//            return false;
+//        if (!Objects.equals(this.Telefono, other.Telefono)) 
+//            return false;
+//        return Objects.equals(this.email, other.email);
     }
 
     

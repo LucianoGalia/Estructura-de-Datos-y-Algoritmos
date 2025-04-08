@@ -198,7 +198,7 @@ public class ListaEnContactos {
 		Nodo aux = this.primero;
 		
 		if (aux == null || posicion > this.cantidad() || posicion <= 0) {
-		System.out.println("No se puede buscar el valor en la posición porque la lista está vacía o no existe un elemento en la posición ingresada."); 
+		throw new Exception("No se puede buscar el valor en la posición porque la lista está vacia o no existe un elemento en la posicion ingresada."); 
 		}
 		
 		for (int i = 1; i < posicion; i++) {

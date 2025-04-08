@@ -61,4 +61,15 @@ public class Agenda implements IAgenda {
 		return c;
     }
     
+    
+    //Agrego nuevos metodos
+    
+    public ListaEnContactos getListaAgenda() {
+		return listaAgenda;
+	}
+    
+    public void setListaAgenda(ListaEnContactos listaAgenda) {
+		this.listaAgenda = listaAgenda;
+	}
+    
 }
