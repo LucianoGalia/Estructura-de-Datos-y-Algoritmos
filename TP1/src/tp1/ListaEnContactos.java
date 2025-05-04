@@ -84,22 +84,37 @@ public class ListaEnContactos {
 		return this;
 	}
     
-    public void mostrar() { // Recorre y muestra los contactos de la lista
-		if (this.primero == null) {
-			return;
-		}
-		
-		Nodo aux;
-		aux = this.primero;
-		System.out.println();
-		
-		while(aux != null) {
-			System.out.println(" -> " + aux.getContacto().toString());
-			aux = aux.getSiguiente();
-		}
-		
-		System.out.println();
-	}
+//    public void mostrar() { // Recorre y muestra los contactos de la lista
+//		if (this.primero == null) {
+//			return;
+//		}
+//		
+//		Nodo aux;
+//		aux = this.primero;
+//		System.out.println();
+//		
+//		while(aux != null) {
+//			System.out.println(" -> " + aux.getContacto().toString());
+//			aux = aux.getSiguiente();
+//		}
+//		
+//		System.out.println();
+//	}
+    
+         public void mostrar() { //tp3 punto 4
+            System.out.println();
+        if (this.primero != null) {
+            mostrarAux(this.primero);
+        }
+            System.out.println();
+}
+
+    private void mostrarAux(Nodo actual) {
+        System.out.println(" -> " + actual.getContacto().toString());
+    if (actual.getSiguiente() != null) {
+        mostrarAux(actual.getSiguiente());
+    }
+}
     
     public int cantidad() { //Devuelve la cantidad de contactos de la lista.
         return this.cantidad;

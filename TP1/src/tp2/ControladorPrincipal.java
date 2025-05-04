@@ -27,22 +27,22 @@ public class ControladorPrincipal {
         // b) Genere las matrices con números aleatorios.
         Random rand = new Random();
         
-        
+        //le mando los valores randoms
         ProductoMatrices.llenarMatrices(matrizA, rand, n);
         ProductoMatrices.llenarMatrices(matrizB, rand, n);
         
-        System.out.println("\nMatriz A generada:");
-        ProductoMatrices.imprimirMatriz(matrizA);
+        System.out.println("\nMatriz A generada:"); //imprimo el mensaje "Matriz A Generada: "
+        ProductoMatrices.imprimirMatriz(matrizA); //lo muestro
 
         System.out.println("\nMatriz B generada:");
         ProductoMatrices.imprimirMatriz(matrizB);
         
-        int[][] matrizResultado = ProductoMatrices.Producto(matrizB, matrizB, n);
+        int[][] matrizResultado = ProductoMatrices.Producto(matrizB, matrizB, n); //producto AxB
         
-        System.out.println("\nProducto MatrizResultado = MatrizA x MatrizB: \n");
-        ProductoMatrices.imprimirMatriz(matrizResultado);
-
-        teclado.close();
+        System.out.println("\nProducto MatrizResultado = MatrizA x MatrizB: \n"); //imprimo
+        ProductoMatrices.imprimirMatriz(matrizResultado); //lo muuestro
+        System.out.println("");
+        teclado.close(); //cierro el teclado
         
         //Analizo el tiempo
         /*c) Ejecute el programa con valores crecientes de n y mida el tiempo de ejecución
