@@ -74,7 +74,7 @@ public class Pila<Item> {
             System.out.print("|" + aux.getDato() + "|");
             aux = aux.getSiguiente();
             if(aux != null){
-                System.out.println("_");
+                System.out.println("");
             }
             
         }
