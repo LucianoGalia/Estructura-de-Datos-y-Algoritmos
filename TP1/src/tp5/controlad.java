@@ -12,11 +12,14 @@ public class controlad {
     public static void main(String args[]) {
         
         Pila p1 = Pila.Crear();
+        Pila p2 = Pila.Crear();
         
         p1.Push(1);
         p1.Push(2);
         p1.Push(3);
         p1.Push(4);
+        
+        p2.Push(6);
         
         System.out.println("La pila es: ");
         p1.mostrar();
@@ -29,6 +32,12 @@ public class controlad {
         
         System.out.println("El ultimo elemento de mi pila es: " + p1.Fondo());
         System.out.println("\nEl primero es: " + p1.Top());
+        
+        System.out.println("Pila 2 : ");
+        p2.mostrar();
+        System.out.println("El ultimo elemento de mi pila es: " + p2.Fondo());
+        System.out.println("\nEl primero es: " + p2.Top());
+               
         
         
     }

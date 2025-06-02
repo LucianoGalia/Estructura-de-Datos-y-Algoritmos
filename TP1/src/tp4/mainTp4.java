@@ -25,6 +25,8 @@ public class mainTp4 {
         red1.registrar(u2);
         red2.registrar(u3);
         red2.registrar(u4);
+        System.out.println("muestro usuarios: ");
+        red1.mostrar();
         
         System.out.println("Es vacia red1: " + red1.esVacia());
         

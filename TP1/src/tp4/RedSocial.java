@@ -35,6 +35,22 @@ public class RedSocial {
     this.cantidad++;                // Incrementa el contador
     return this;                    // Retorna la red social actualizada
 }
+    public void mostrar(){
+        Nodo aux = this.primero;
+        
+        while(aux != null) {
+            System.out.print(aux.getUsuario().getNombre());
+            System.out.print("," + aux.getUsuario().getApellido());
+            
+            aux = aux.getSiguiente();
+            
+            if(aux != null) {
+                System.out.println();
+            }
+            
+        }
+        System.out.println();
+    }
     
     public boolean esVacia() {
         return primero == null;

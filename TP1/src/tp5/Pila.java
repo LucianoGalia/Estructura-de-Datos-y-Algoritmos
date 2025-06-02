@@ -69,7 +69,7 @@ public class Pila<Item> {
         Nodo aux;
         aux = this.tope;
         
-        System.out.println("\n");
+        System.out.println("");
         while(aux != null) {
             System.out.print("|" + aux.getDato() + "|");
             aux = aux.getSiguiente();
