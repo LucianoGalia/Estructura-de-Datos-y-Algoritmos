@@ -21,6 +21,12 @@ public class Controlo {
         System.out.println("\nLista original: ");
         fila.mostrarFila();
         
+//        System.out.println("Pruebo deFila");
+//        fila.deFila();
+//        
+//        System.out.println("\nLista modificada: ");
+//        fila.mostrarFila();
+        
         UsuarioADTFila.invertirFila(fila);
         System.out.println("\nLista invertida: ");
         fila.mostrarFila();

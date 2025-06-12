@@ -42,7 +42,7 @@ public class Fila <Item> {
         }
     }
 
-    
+    //1) a)
     public Fila enFila(Item i) {
         Nodo nuevo = new Nodo(i);
         
@@ -59,7 +59,7 @@ public class Fila <Item> {
     }
 
     
-    public Fila deFila() {
+    public Fila deFila() { //Borra el primer elemento agregado, osea el (1,2,3,4,5) borra el 1
         if (!this.esFilaVacia()) {
             this.frenteLista = this.frenteLista.getSiguiente();
             this.cantidad--;
