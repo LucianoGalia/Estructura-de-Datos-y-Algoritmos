@@ -68,8 +68,9 @@ public class Fila <Item> {
         return this;
     }
 
-   
-    public Fila enFilaN(Item item, int cantidad) {
+    //operación que, dada una Fila, un ítem y una cantidad,
+    //agrega a la fila el ítem tantas veces como indica la cantidad.
+    public Fila enFilaN(Item item, int cantidad) { 
         for (int i = 0; i < cantidad; i++) {
             this.enFila(item);
             this.cantidad++;
@@ -78,7 +79,8 @@ public class Fila <Item> {
         return this;
     }
 
-    
+    //ubica el primer elemento de la fila al final de la misma.
+
     public Fila reenfilar() {
         if (this.cantidad() > 1) {
             this.enFila(this.frente()); 
@@ -93,35 +95,44 @@ public class Fila <Item> {
         return this.cantidad;
     }
 
-  
-    public Fila borrar(Item item) {
+  /*operación que elimina todas las ocurrencias de un
+    determinado item en la fila.*/
+    //La funcion setSiguiente() hace asignar el puntero del nodo, por eso O apunta a A en vez de L porque quiere borrar L
+    public Fila Borrar(Item item) {
+        if (this.esFilaVacia()) {
+            return this;
+        }
+
+        // Primer control: Eliminar todos los elementos del principio que coinciden
+        while (this.frenteLista != null && this.frenteLista.getItem().equals(item)) {
+            this.frenteLista = this.frenteLista.getSiguiente();
+            this.cantidad--;
+        }
+
+        // Si después de borrar todo el frente quedó vacía, también se borra el último
+        if (this.frenteLista == null) {
+            this.finalLista = null;
+            return this;
+        }
         Nodo actual = this.frenteLista;
-        Nodo anterior = null;
         
-        while (actual != null) {
-            if (actual.getItem().equals(item)) {
-                if (anterior == null) {
-                    this.frenteLista = this.frenteLista.getSiguiente();
-                    actual = this.frenteLista;
-                } else {
-                    anterior.setSiguiente(actual.getSiguiente());
-                    actual = actual.getSiguiente();
-                    
-                    if (actual == null) {
-                        this.finalLista = anterior;
-                    }
+        //Segundo control: Los siguientes a primero es aux. Verifico que coinciden
+        while (actual.getSiguiente() != null) {
+            if (actual.getSiguiente().getItem().equals(item)) {
+                if (actual.getSiguiente() == this.finalLista) {
+                    this.finalLista = actual;
                 }
-                
+                actual.setSiguiente(actual.getSiguiente().getSiguiente());
                 this.cantidad--;
+
             } else {
-                anterior = actual;
                 actual = actual.getSiguiente();
             }
         }
+    return this;
         
-        return this;
-    }
-
+    }    
+   
     
     public Item[] toArray() {
         Item[] arr = (Item[]) new Object[this.cantidad()];

@@ -21,28 +21,39 @@ public class Controlo {
         System.out.println("\nLista original: ");
         fila.mostrarFila();
         
-//        System.out.println("Pruebo deFila");
+//        System.out.println("\nPruebo deFila: ");
 //        fila.deFila();
-//        
-//        System.out.println("\nLista modificada: ");
 //        fila.mostrarFila();
         
-        UsuarioADTFila.invertirFila(fila);
-        System.out.println("\nLista invertida: ");
+        System.out.println("\nAgrego x 3 veces: ");
+        fila.enFilaN(20, 5);
         fila.mostrarFila();
         
-        UsuarioADTFila.invertirFila(fila);
+        System.out.println("\n");
         
-        Fila<Integer> otraFila;
-        otraFila = UsuarioADTFila.dividirFila(fila, 3);
-        System.out.println("\nLista original (sin los primeros 3 elementos): ");
-        fila.mostrarFila();
-        System.out.println("\nLista nueva con los primeros 3 elementos de la anterior: ");
-        otraFila.mostrarFila();
-        
-        // probando metodo unionFilas()
-        System.out.println("\nUnion de las dos filas: ");
-        Fila filaUnion = UsuarioADTFila.unirFilas(fila, otraFila);
-        filaUnion.mostrarFila();
+//        System.out.println("\nPruebo Borrar 2\n");
+//        fila.Borrar(2);
+//        fila.mostrarFila();
+//        System.out.println("\nAgrego el 1 al final y el 2 pasa a ser el primero:");
+//         fila.reenfilar();
+//         fila.mostrarFila();
+         
+//        UsuarioADTFila.invertirFila(fila);
+//        System.out.println("\nLista invertida: ");
+//        fila.mostrarFila();
+//        
+//        UsuarioADTFila.invertirFila(fila);
+//        
+//        Fila<Integer> otraFila;
+//        otraFila = UsuarioADTFila.dividirFila(fila, 3);
+//        System.out.println("\nLista original (sin los primeros 3 elementos): ");
+//        fila.mostrarFila();
+//        System.out.println("\nLista nueva con los primeros 3 elementos de la anterior: ");
+//        otraFila.mostrarFila();
+//        
+//        // probando metodo unionFilas()
+//        System.out.println("\nUnion de las dos filas: ");
+//        Fila filaUnion = UsuarioADTFila.unirFilas(fila, otraFila);
+//        filaUnion.mostrarFila();
     }
 }
