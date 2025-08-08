@@ -56,6 +56,7 @@ public class ArbolBinario {
             nuevoAB.setDerecho(derecho); //sino lo agrega
         }
         
+        
         return nuevoAB; //retorna el agregado
     }
     

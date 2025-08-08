@@ -137,7 +137,7 @@ public class ListaEnlazada implements IListaEnlazada {
             this.primero = this.primero.getSiguiente();
             this.cantidad--;
             return this;
-    }
+    }//ABCD
 
     @Override
     public ListaEnlazada borrarUltimo() {   //Elimina el ultimo nodo de la lista
@@ -154,7 +154,7 @@ public class ListaEnlazada implements IListaEnlazada {
         
         while(aux.getSiguiente().getSiguiente() != null) {
 			aux = aux.getSiguiente();
-	}
+	}//ABCD
         
         aux.setSiguiente(null);
         this.cola = aux;
@@ -251,7 +251,7 @@ public class ListaEnlazada implements IListaEnlazada {
 
     @Override
     public ListaEnlazada insertarEnPosicion(int valor, int posicion) {  //Inserta un nodo en la posición posición con valor valor
-        Nodo aux = this.primero;
+                Nodo aux = this.primero;
 		Nodo nuevo = new Nodo(valor);
 		
 		if (posicion <= 0 || posicion > this.cantidad()) {
@@ -261,7 +261,7 @@ public class ListaEnlazada implements IListaEnlazada {
 		for (int i = 1; i < posicion - 1; i++) {		// Me ubico en la posición anterior a la ingresada
 			aux = aux.getSiguiente();
 		}
-		
+		//123456 , valor = T, posicion 3, 123T456
 		nuevo.setSiguiente(aux.getSiguiente());
 		aux.setSiguiente(nuevo);
 		this.cantidad++;

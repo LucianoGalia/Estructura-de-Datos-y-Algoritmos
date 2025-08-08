@@ -24,20 +24,20 @@ public class controlad {
         System.out.println("La pila es: ");
         p1.mostrar();
         
-        System.out.println("La cantidad es: " + p1.cantidad());
-        System.out.println("\nQuiero borrar el ultimo elemento (4)");
-        p1.Pop();
-        
-        p1.mostrar();
-        
-        System.out.println("El ultimo elemento de mi pila es: " + p1.Fondo());
-        System.out.println("\nEl primero es: " + p1.Top());
-        
-        System.out.println("Pila 2 : ");
-        p2.mostrar();
-        System.out.println("El ultimo elemento de mi pila es: " + p2.Fondo());
-        System.out.println("\nEl primero es: " + p2.Top());
-               
+//        System.out.println("La cantidad es: " + p1.cantidad());
+//        System.out.println("\nQuiero borrar el ultimo elemento (4)");
+//        p1.Pop();
+//        
+//        p1.mostrar();
+//        
+//        System.out.println("El ultimo elemento de mi pila es: " + p1.Fondo());
+//        System.out.println("\nEl primero es: " + p1.Top());
+//        
+//        System.out.println("Pila 2 : ");
+//        p2.mostrar();
+//        System.out.println("El ultimo elemento de mi pila es: " + p2.Fondo());
+//        System.out.println("\nEl primero es: " + p2.Top());
+//               
         
         
     }

@@ -96,7 +96,7 @@ public class Fila<Item> {
 
     public Fila Borrar(Item x) {
 
-        if (this.esFilaVacia()) {
+        if (this.esFilaVacia()) { //Caso base
             return this;
         }
 
